@@ -929,9 +929,7 @@ textarea.form-control{min-height:120px;resize:vertical;}
    PHASE 2: FULL MOBILE RESPONSIVE SYSTEM
    ============================================================ */
 
-/* Back to Top Button */
 
-.back-to-top.visible { opacity: 1; visibility: visible; transform: none; }
 
 /* Section Divider Curves */
 .section-divider {
@@ -2128,49 +2126,7 @@ section, .wrap { overflow-x: clip; }
 }
 
 
-/* Floating Back to Top Button — APEX Blue Circle Style */
-.back-to-top {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  z-index: 250;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #38BDF8 0%, #0099E6 100%) !important;
-  color: #0F172A !important;
-  border: none !important;
-  box-shadow: 0 10px 30px rgba(0, 153, 230, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(16px) scale(0.85);
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, visibility 0.3s !important;
-}
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-.back-to-top:hover {
-  transform: translateY(-4px) scale(1.08) !important;
-  box-shadow: 0 16px 40px rgba(0, 174, 239, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
-  background: linear-gradient(135deg, #38BDF8 0%, #00AEEF 100%) !important;
-}
-.back-to-top:active {
-  transform: translateY(-1px) scale(0.96) !important;
-}
-@media (max-width: 480px) {
-  .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-  }
-}
+
 
 </style>
 
@@ -2375,45 +2331,7 @@ body::before {
 }
 
 
-/* Floating Back to Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 250;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00AEEF 0%, #007BB5 100%);
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 153, 230, 0.4), inset 0 1px 0 rgba(255,255,255,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(16px) scale(0.9);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-.back-to-top:hover {
-  transform: translateY(-4px) scale(1.06) !important;
-  box-shadow: 0 12px 32px rgba(0, 153, 230, 0.55), inset 0 1px 0 rgba(255,255,255,0.6) !important;
-}
-@media (max-width: 480px) {
-  .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 42px;
-    height: 42px;
-  }
-}
+
 
 </style>
 <script>
@@ -3793,25 +3711,7 @@ function handleModalQuoteSubmit(e) {
 
   document.querySelectorAll('.counter').forEach(c => counterObs.observe(c));
 
-  // ===== Back to Top Button =====
-  function toggleBtt() {
-    const btt = document.getElementById('backToTop');
-    if (!btt) return;
-    const y = window.scrollY || window.pageYOffset || (typeof lenis !== 'undefined' ? lenis.scroll : 0);
-    btt.classList.toggle('visible', y > 350);
-  }
-  window.toggleBtt = toggleBtt;
-  addEventListener('scroll', () => requestAnimationFrame(toggleBtt), {passive: true});
-  
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('#backToTop')) {
-      if (typeof lenis !== 'undefined') {
-        lenis.scrollTo(0, { duration: 1.5 });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-  });
+
 
   // ===== Hero Entrance Animation =====
   function triggerHeroEntrance() {
@@ -3862,10 +3762,6 @@ function handleModalQuoteSubmit(e) {
   </div>
 </div>
 
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="18 15 12 9 6 15"></polyline>
-  </svg>
-</button>
+
 </body>
 </html>
