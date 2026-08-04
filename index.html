@@ -709,7 +709,38 @@ textarea.form-control{min-height:120px;resize:vertical;}
 .footer__col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
 .footer__col a,.footer__col li{font-family:var(--font-body);font-weight:400;font-size:18px;line-height:29px;color:rgba(255,255,255,.7);transition:color .2s;}
 .footer__col a:hover{color:#007BB5;}
-.footer__bottom{padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--font-body);font-weight:400;font-size:18px;line-height:29px;color:#E2E8F0;}
+.footer__bottom{padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--font-body);font-weight:400;font-size:18px;line-height:29px;color:#E2E8F0;}
+.footer__bottom-copy{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+.google-guaranteed{
+  display:inline-flex;align-items:center;gap:10px;flex-shrink:0;
+  background:#000;color:#fff;border-radius:8px;padding:8px 14px 8px 10px;
+  text-decoration:none;border:1px solid rgba(255,255,255,.12);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.google-guaranteed:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.35);}
+.google-guaranteed__check{
+  width:36px;height:36px;border-radius:50%;background:#34A853;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.google-guaranteed__check svg{width:20px;height:20px;display:block;}
+.google-guaranteed__text{display:flex;flex-direction:column;gap:1px;line-height:1.1;}
+.google-guaranteed__brand{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;letter-spacing:-0.02em;}
+.google-guaranteed__brand .g1{color:#4285F4;}
+.google-guaranteed__brand .g2{color:#EA4335;}
+.google-guaranteed__brand .g3{color:#FBBC05;}
+.google-guaranteed__brand .g4{color:#4285F4;}
+.google-guaranteed__brand .g5{color:#34A853;}
+.google-guaranteed__brand .g6{color:#EA4335;}
+.google-guaranteed__label{font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:600;color:#fff;letter-spacing:.01em;}
+.google-guaranteed__stars{display:flex;gap:2px;margin-top:2px;}
+.google-guaranteed__stars svg{width:11px;height:11px;display:block;}
+@media(max-width:500px){
+  .google-guaranteed{padding:7px 12px 7px 8px;}
+  .google-guaranteed__check{width:32px;height:32px;}
+  .google-guaranteed__check svg{width:18px;height:18px;}
+  .google-guaranteed__brand{font-size:14px;}
+  .google-guaranteed__label{font-size:12px;}
+}
 .footer__wordmark{
   font-family:var(--font-display);font-weight:700;text-align:center;letter-spacing:.04em;text-transform:uppercase;
   font-size:clamp(3.5rem,14.5vw,15rem);line-height:.82;margin-top:40px;user-select:none;white-space:nowrap;padding: 0 2vw;
@@ -3112,8 +3143,31 @@ function handleModalQuoteSubmit(e) {
     </div>
 
     <div class="footer__bottom">
-      <span>© 2026 APEX Block Paving. All rights reserved.</span> &nbsp;•&nbsp; <span>Paved to Perfection, Built to Last</span>
-      <span>Leitrim, Ireland · Professional Paving Specialists</span>
+      <div class="footer__bottom-copy">
+        <span>© 2026 APEX Block Paving. All rights reserved.</span>
+        <span aria-hidden="true">•</span>
+        <span>Paved to Perfection, Built to Last</span>
+        <span aria-hidden="true">•</span>
+        <span>Leitrim, Ireland · Professional Paving Specialists</span>
+      </div>
+      <div class="google-guaranteed" role="img" aria-label="Google Guaranteed">
+        <span class="google-guaranteed__check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.2 16.6L4.8 12.2l1.4-1.4 3 3 8-8 1.4 1.4-9.4 9.4z" fill="#fff"/></svg>
+        </span>
+        <span class="google-guaranteed__text">
+          <span class="google-guaranteed__brand" aria-hidden="true">
+            <span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span>
+          </span>
+          <span class="google-guaranteed__label">Guaranteed</span>
+          <span class="google-guaranteed__stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5l2.9 6.1 6.7.9-4.8 4.7 1.2 6.6L12 17.6l-5.9 3.2 1.2-6.6L2.4 9.5l6.7-.9L12 2.5z" fill="#FBBC05"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5l2.9 6.1 6.7.9-4.8 4.7 1.2 6.6L12 17.6l-5.9 3.2 1.2-6.6L2.4 9.5l6.7-.9L12 2.5z" fill="#FBBC05"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5l2.9 6.1 6.7.9-4.8 4.7 1.2 6.6L12 17.6l-5.9 3.2 1.2-6.6L2.4 9.5l6.7-.9L12 2.5z" fill="#FBBC05"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5l2.9 6.1 6.7.9-4.8 4.7 1.2 6.6L12 17.6l-5.9 3.2 1.2-6.6L2.4 9.5l6.7-.9L12 2.5z" fill="#FBBC05"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.5l2.9 6.1 6.7.9-4.8 4.7 1.2 6.6L12 17.6l-5.9 3.2 1.2-6.6L2.4 9.5l6.7-.9L12 2.5z" fill="#FBBC05"/></svg>
+          </span>
+        </span>
+      </div>
     </div>
   </div>
 
