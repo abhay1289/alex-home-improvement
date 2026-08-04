@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+set timeout 120
+spawn npx vercel --prod
+expect "Set up and deploy"
+send "y\r"
+expect "Which scope"
+send "\r"
+expect "Link to existing project"
+send "N\r"
+expect "project’s name"
+send "apex-paving-web\r"
+expect "In which directory is your code located"
+send "\r"
+expect eof
