@@ -3086,7 +3086,6 @@ function handleModalQuoteSubmit(e) {
     return String(num).padStart(3, '0');
   }
 
-  document.body.classList.add('loaded');
   setupScrub();
 
   // Bulletproof frame loader: Stagger requests to prevent mobile network crashes,
@@ -3098,10 +3097,18 @@ function handleModalQuoteSubmit(e) {
       if (typeof window.drawInitialHeroFrame === 'function') {
         window.drawInitialHeroFrame();
       }
+      // Reveal the page ONLY after the critical first frame is ready
+      if (i === 1) document.body.classList.add('loaded');
     };
-    img.onerror = () => { /* gracefully ignore missing frames */ };
+    img.onerror = () => { 
+      /* gracefully ignore missing frames */ 
+      if (i === 1) document.body.classList.add('loaded'); // fallback reveal
+    };
     img.src = `./images/hero-frames/frame_${pad3(i)}.jpg`;
-    if (img.complete && img.naturalWidth > 0) loadedFrames.add(i);
+    if (img.complete && img.naturalWidth > 0) {
+      loadedFrames.add(i);
+      if (i === 1) document.body.classList.add('loaded');
+    }
     frameImages[i] = img;
   }
 
