@@ -710,7 +710,9 @@ textarea.form-control{min-height:120px;resize:vertical;}
 /* Continuous Scrolling Testimonial Marquee */
 .testi-marquee { position: relative; overflow: hidden; width: 100%; margin-top: 48px; padding: 10px 0; z-index: 2; }
 .testi-track { display: flex; gap: 24px; width: max-content; animation: testiScroll 45s linear infinite; }
-.testi-marquee:hover .testi-track { animation-play-state: paused; }
+@media (hover: hover) {
+  .testi-marquee:hover .testi-track { animation-play-state: paused; }
+}
 
 @keyframes testiScroll {
   to { transform: translateX(-50%); }
