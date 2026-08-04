@@ -263,16 +263,50 @@ p, li, .lead, .section-desc, .hero-sub, .service-card__desc, .framer-stack-card_
   }
 }
 
-/* FULLSCREEN MENU */
-.nav-menu{position:fixed;inset:0;z-index:190;background:rgba(7,10,16,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  display:flex;flex-direction:column;justify-content:center;padding:100px var(--pad) 60px;
-  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility 0s linear .4s;}
-.nav-menu.is-open{opacity:1;visibility:visible;transition:opacity .4s var(--ease),visibility 0s;}
-.nav-menu__links{max-width:var(--max);width:100%;margin:0 auto;display:flex;flex-direction:column;}
-.nav-menu__link{display:flex;align-items:center;gap:24px;padding:24px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);text-decoration:none;color: #FFFFFF;
-  font-weight:600;font-size:clamp(1.8rem,4vw,3.2rem);line-height:1.1;
-  opacity:0;transform:translateY(20px);transition:opacity .4s var(--ease),transform .4s var(--ease),color .3s;}
+/* FULLSCREEN MENU (MATCHING REFERENCE DESIGN) */
+.nav-menu {
+  position: fixed; inset: 0; z-index: 190;
+  background: #0A0E16;
+  overflow-y: auto;
+  padding: 90px 24px 60px;
+  opacity: 0; visibility: hidden;
+  transition: opacity .4s var(--ease), visibility 0s linear .4s;
+}
+.nav-menu.is-open {
+  opacity: 1; visibility: visible; transition: opacity .4s var(--ease), visibility 0s;
+}
+.nav-menu__container {
+  max-width: 540px; margin: 0 auto; width: 100%;
+  display: flex; flex-direction: column; gap: 36px;
+}
+.nav-menu__group {
+  display: flex; flex-direction: column;
+}
+.nav-menu__kicker {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.78rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #94A3B8;
+  margin-bottom: 8px;
+}
+.nav-menu__kicker span {
+  width: 24px; height: 2px; background: #FF5A36; display: inline-block;
+}
+.nav-menu__item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none; color: #FFFFFF;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; line-height: 1.2;
+  transition: color 0.2s ease;
+}
+.nav-menu__item svg {
+  color: rgba(255, 255, 255, 0.6); transition: transform 0.2s ease, color 0.2s ease;
+}
+.nav-menu__item:hover {
+  color: var(--apex-blue);
+}
+.nav-menu__item:hover svg {
+  color: var(--apex-blue); transform: translateX(4px);
+}
 .nav-menu__link:hover{color:#007BB5;}
 .nav-menu.is-open .nav-menu__link{opacity:1;transform:none;}
 .nav-menu__num{font-weight:400;font-size:1rem;color: var(--apex-blue);min-width:38px;}
@@ -2389,15 +2423,52 @@ function handleModalQuoteSubmit(e) {
   </nav>
 </header>
 
-<!-- FULLSCREEN MENU -->
+<!-- FULLSCREEN MENU (MATCHING REFERENCE LAYOUT) -->
 <div class="nav-menu" id="navMenu">
-  <div class="nav-menu__links">
-    <a href="#" class="nav-menu__link" data-menu-link><span class="nav-menu__num">(01)</span> Home</a>
-    <a href="#about" class="nav-menu__link" data-menu-link><span class="nav-menu__num">(02)</span> Why Choose Apex</a>
-    <a href="#services" class="nav-menu__link" data-menu-link><span class="nav-menu__num">(03)</span> Our Paving Services</a>
-    <a href="#checklist" class="nav-menu__link" data-menu-link><span class="nav-menu__num">(04)</span> Service Scope</a>
-    <a href="#estimator" class="nav-menu__link" data-menu-link><span class="nav-menu__num">(05)</span> Instant Cost Estimator</a>
-    <a href="#contact" class="nav-menu__link" data-menu-link><span class="nav-menu__num">(06)</span> Contact Jay (Free Quote)</a>
+  <div class="nav-menu__container">
+    <div class="nav-menu__group">
+      <div class="nav-menu__kicker"><span></span> NAVIGATION</div>
+      <a href="#" class="nav-menu__item" data-menu-link>
+        <span>Home</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#about" class="nav-menu__item" data-menu-link>
+        <span>Why Choose APEX</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#estimator" class="nav-menu__item" data-menu-link>
+        <span>Instant Cost Estimator</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#faq" class="nav-menu__item" data-menu-link>
+        <span>Frequently Asked Questions</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="nav-menu__item" data-menu-link>
+        <span>Contact Jay (Free Quote)</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="nav-menu__group">
+      <div class="nav-menu__kicker"><span></span> OUR PAVING SERVICES</div>
+      <a href="#services" class="nav-menu__item" data-menu-link>
+        <span>Block Paved Driveways</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="nav-menu__item" data-menu-link>
+        <span>Custom Patios &amp; Pathways</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="nav-menu__item" data-menu-link>
+        <span>Groundwork &amp; Drainage</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="nav-menu__item" data-menu-link>
+        <span>Power Wash &amp; Sealing</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
