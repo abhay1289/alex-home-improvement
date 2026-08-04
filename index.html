@@ -238,10 +238,10 @@ p, li, .lead, .section-desc, .hero-sub, .service-card__desc, .framer-stack-card_
   .promo-bar { display: none !important; }
   .nav {
     padding: 14px 20px !important;
-    background: rgba(10, 14, 22, 0.88) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: none !important;
   }
   .nav__logo-img { height: 42px !important; }
   .nav__desktop-links { display: none !important; }
@@ -266,7 +266,9 @@ p, li, .lead, .section-desc, .hero-sub, .service-card__desc, .framer-stack-card_
 /* FULLSCREEN MENU (MATCHING REFERENCE DESIGN) */
 .nav-menu {
   position: fixed; inset: 0; z-index: 190;
-  background: #0A0E16;
+  background: rgba(10, 14, 22, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   overflow-y: auto;
   padding: 90px 24px 60px;
   opacity: 0; visibility: hidden;
@@ -293,9 +295,9 @@ p, li, .lead, .section-desc, .hero-sub, .service-card__desc, .framer-stack-card_
 }
 .nav-menu__item {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   text-decoration: none; color: #FFFFFF;
-  font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; line-height: 1.2;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; line-height: 1.2;
   transition: color 0.2s ease;
 }
 .nav-menu__item svg {
@@ -700,7 +702,7 @@ textarea.form-control{min-height:120px;resize:vertical;}
   position: -webkit-sticky !important;
   position: sticky !important;
   top: 110px !important;
-  min-height: clamp(390px, 50vh, 470px);
+  min-height: clamp(320px, 42vh, 400px);
   height: auto;
   border-radius: var(--r-xl);
   overflow: hidden;
