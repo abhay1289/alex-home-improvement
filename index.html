@@ -234,8 +234,33 @@ p, li, .lead, .section-desc, .hero-sub, .service-card__desc, .framer-stack-card_
 .nav__cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(0, 174, 239,.35);}
 
 @media (max-width: 960px) {
+  .site-header { position: fixed !important; top: 0; left: 0; right: 0; z-index: 250; }
+  .promo-bar { display: none !important; }
+  .nav {
+    padding: 14px 20px !important;
+    background: rgba(10, 14, 22, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  .nav__logo-img { height: 42px !important; }
   .nav__desktop-links { display: none !important; }
-  .nav__toggle { display: flex !important; }
+  .nav__cta { display: none !important; }
+  .nav__toggle {
+    display: flex !important;
+    background: transparent !important;
+    border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
+  }
+  .nav__toggle svg {
+    width: 28px !important;
+    height: 28px !important;
+    stroke-width: 2.2 !important;
+  }
 }
 
 /* FULLSCREEN MENU */
