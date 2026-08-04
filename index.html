@@ -9,7 +9,7 @@
 <link rel="dns-prefetch" href="https://unpkg.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css" media="print" onload="this.media='all'">
 <style>
 /* ============================================================
@@ -34,9 +34,9 @@
   --line:rgba(0,153,230,.32);
   --line-soft:rgba(255,255,255,.14);
 
-  --font-display:'Outfit', 'Space Grotesk', system-ui, sans-serif;
-  --font-body:'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-ui:'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Manrope', "manrope Fallback", "SF Pro Display", system-ui, sans-serif;
+  --font-body: 'Inter', "inter Fallback", "SF Pro Text", system-ui, -apple-system, sans-serif;
+  --font-ui: 'Manrope', "manrope Fallback", "SF Pro Display", system-ui, sans-serif;
   --font-script:'Caveat', cursive;
 
   --max:1280px;
@@ -57,15 +57,21 @@ body { overflow-x:clip; width:100%; }
 html, body {
   color: var(--ink);
   background: var(--cream);
-  line-height: 1.7; /* Increased for editorial feel */
-  letter-spacing: -0.01em; /* Tighter for modern feel */
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  letter-spacing: -0.01em;
 }
 
 body {
   color: var(--ink);
   background: var(--cream);
-  line-height: 1.7; /* Increased for editorial feel */
-  letter-spacing: -0.01em; /* Tighter for modern feel */
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  letter-spacing: -0.01em;
 }
 .hero { background: #080B12; }
 img{max-width:100%;display:block;}
@@ -74,13 +80,29 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;}
 ::selection{background: var(--apex-blue);color:var(--ink);}
 
 /* ---------- TYPOGRAPHY ---------- */
-h1, h2, h3, .display-1, .display-2, .display-3 { text-wrap: balance; }
-p, li { text-wrap: pretty; }
+h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .section-head h2, .section__head h2 {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 700;
+  text-wrap: balance;
+}
+h2, .section-head h2, .section__head h2 {
+  font-size: 44px;
+  line-height: 48px;
+}
+p, li, .lead, .section-desc, .hero-sub, .service-card__desc, .framer-stack-card__desc {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  text-wrap: pretty;
+}
 .price, .stat__num, .counter, .about__badge b { font-variant-numeric: tabular-nums; }
 
-.display-1{font-weight:700;font-size:clamp(3.2rem,8vw,104px);line-height:.95;letter-spacing:-.03em;color: #FFFFFF;}
-.display-2{font-weight:700;font-size:clamp(2.4rem,4.8vw,58px);line-height:1.05;letter-spacing:-.02em;}
-.display-3{font-weight:600;font-size:clamp(1.5rem,3vw,38px);line-height:1.1;}
+.display-1{font-family:var(--font-display);font-weight:700;font-size:clamp(3.2rem,8vw,104px);line-height:1.05;letter-spacing:-.03em;color: #FFFFFF;}
+.display-2{font-family:var(--font-display);font-weight:700;font-size:44px;line-height:48px;letter-spacing:-.02em;}
+.display-3{font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,3vw,38px);line-height:1.1;}
 
 .display-1 em,.display-2 em,.display-3 em{
   display: inline-block;
@@ -95,11 +117,11 @@ p, li { text-wrap: pretty; }
 }
 
 .kicker{
-  display:inline-flex;align-items:center;gap:12px;font-size:.84rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color: var(--apex-blue);
+  display:inline-flex;align-items:center;gap:12px;font-family:var(--font-display);font-size:.84rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color: var(--apex-blue);
 }
 .kicker::before{content:"";width:24px;height:2px;background: var(--apex-blue);}
 .kicker.center::after{content:"";width:24px;height:2px;background: var(--apex-blue);}
-.lead{font-weight:400;font-size:1.15rem;line-height:1.65;color:#E2E8F0;}
+.lead{font-family:var(--font-body);font-weight:400;font-size:18px;line-height:29px;color:#E2E8F0;}
 
 /* ---------- LAYOUT & CONTAINERS ---------- */
 .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad);position:relative;z-index:2;}
@@ -119,14 +141,16 @@ p, li { text-wrap: pretty; }
   background: linear-gradient(90deg, #00AEEF 0%, #33BEF2 50%, #00AEEF 100%);
   color: #FFFFFF;
   padding: 10px 16px;
-  font-size: 0.88rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-align: center;
   z-index: 260;
   width: 100%;
 }
-.promo-bar a { text-decoration: underline; margin-left: 8px; color: #FFFFFF; font-weight: 800; }
+.promo-bar a { text-decoration: underline; margin-left: 8px; color: #FFFFFF; font-weight: 700; }
 .nav {
   position: relative !important;
   top: 0 !important;
@@ -137,9 +161,13 @@ p, li { text-wrap: pretty; }
 }
 
 /* Buttons */
-.btn{
+.btn, button, .nav__cta, a.btn, input[type="submit"], .btn--primary, .btn--hero-primary, .btn--hero-outline {
   position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-weight:700;font-size:.9rem;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
   padding:14px 28px;border-radius:999px;text-transform:uppercase;letter-spacing:.08em;
   transition:all 0.3s var(--ease); z-index:1; cursor:pointer;
 }
