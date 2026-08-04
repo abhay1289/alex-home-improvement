@@ -3090,42 +3090,53 @@ function handleModalQuoteSubmit(e) {
 
   // Bulletproof frame loader: Stagger requests to prevent mobile network crashes,
   // ensure paths are strictly relative, and handle missing frames gracefully.
-  function loadFrame(i) {
+  function loadFrame(i, callback) {
+    if (frameImages[i]) return; // already loaded or loading
     const img = new Image();
-    img.onload = () => {
+    let handled = false;
+    
+    const onReady = () => {
+      if (handled) return;
+      handled = true;
       loadedFrames.add(i);
       if (typeof window.drawInitialHeroFrame === 'function') {
         window.drawInitialHeroFrame();
       }
-      // Reveal the page ONLY after the critical first frame is ready
-      if (i === 1) document.body.classList.add('loaded');
+      if (callback) callback();
     };
+
+    img.onload = onReady;
     img.onerror = () => { 
       /* gracefully ignore missing frames */ 
-      if (i === 1) document.body.classList.add('loaded'); // fallback reveal
+      if (callback) callback(); 
     };
+    
     img.src = `./images/hero-frames/frame_${pad3(i)}.jpg`;
+    
     if (img.complete && img.naturalWidth > 0) {
-      loadedFrames.add(i);
-      if (i === 1) document.body.classList.add('loaded');
+      onReady();
     }
     frameImages[i] = img;
   }
 
-  // Priority 1: Load first frame instantly for immediate FCP
-  loadFrame(1);
-  
-  // Priority 2: Load keyframes (every 10th frame) to ensure full scrub track works even on slow 3G
-  for (let i = 10; i <= TOTAL_FRAMES; i += 10) {
-    loadFrame(i);
-  }
-
-  // Priority 3: Lazily load the rest in the background without blocking main thread
-  setTimeout(() => {
-    for (let i = 2; i <= TOTAL_FRAMES; i++) {
-      if (i % 10 !== 0) loadFrame(i);
+  // Priority 1: Dedicate 100% of network bandwidth to Frame 1 for INSTANT mobile load.
+  // We do NOT request any other frames until this one finishes, guaranteeing zero bandwidth splitting.
+  loadFrame(1, () => {
+    // Reveal the page the millisecond Frame 1 is ready
+    document.body.classList.add('loaded');
+    
+    // Priority 2: Now that the user can see the site, load keyframes (every 10th frame)
+    for (let i = 10; i <= TOTAL_FRAMES; i += 10) {
+      loadFrame(i);
     }
-  }, 150);
+    
+    // Priority 3: Lazily load the remaining frames in the background without blocking the UI
+    setTimeout(() => {
+      for (let i = 2; i <= TOTAL_FRAMES; i++) {
+        if (i % 10 !== 0) loadFrame(i);
+      }
+    }, 400);
+  });
 
   // ============================================================
   //  HERO SCROLL-SCRUB ENGINE — HIGH PERFORMANCE CANVAS SEQUENCE
