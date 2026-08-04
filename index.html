@@ -199,26 +199,44 @@ p, li, .lead, .section-desc, .hero-sub, .service-card__desc, .framer-stack-card_
 #preloader .bar{height:100%;width:0;background:linear-gradient(90deg,#00AEEF,#007BB5);}
 
 /* NAV */
-.nav{position:absolute;top:36px;left:0;right:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  padding:16px var(--pad);background:transparent !important;border:none !important;
+.nav{position:relative !important;top:0 !important;z-index:240;display:flex !important;justify-content:space-between !important;align-items:center !important;
+  padding:14px var(--pad) !important;background:transparent !important;border:none !important;
   max-width: var(--max); margin: 0 auto; width: 100%;}
 
-.nav__toggle{position:relative;color:#FFFFFF;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.06);
-  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+.nav__logo{display:flex;align-items:center;z-index:210;}
+.nav__logo-img{height:54px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 12px rgba(0,0,0,0.4));transition:transform .35s var(--ease);}
+.nav__logo:hover .nav__logo-img{transform:scale(1.05);}
+
+.nav__desktop-links {
+  display: flex; align-items: center; gap: 28px; z-index: 210;
+}
+.nav__desktop-links a {
+  font-family: var(--font-display); font-weight: 600; font-size: 14px; line-height: 24px;
+  color: #FFFFFF; text-shadow: 0 2px 8px rgba(0,0,0,0.6); transition: color 0.2s ease;
+}
+.nav__desktop-links a:hover {
+  color: #38BDF8;
+}
+
+.nav__right {
+  display: flex; align-items: center; gap: 12px; z-index: 210;
+}
+.nav__toggle{position:relative;color:#FFFFFF;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);
+  border:1px solid var(--line);display:none;align-items:center;justify-content:center;
   cursor:pointer;transition:all .3s ease;z-index:210;}
 .nav__toggle:hover{border-color: var(--apex-blue);background:rgba(0, 174, 239,.15);}
 .nav__toggle-open{display:block;}.nav__toggle-close{display:none;}
 .nav__toggle.is-open .nav__toggle-open{display:none;}
 .nav__toggle.is-open .nav__toggle-close{display:block;}
 
-.nav__logo{justify-self:center;display:flex;align-items:center;z-index:210;}
-.nav__logo-img{height:72px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 12px rgba(0,0,0,0.4));transition:transform .35s var(--ease);}
-.nav__logo:hover .nav__logo-img{transform:scale(1.05);}
-
-.nav__cta{justify-self:end;display:inline-flex;align-items:stretch;overflow:hidden;
+.nav__cta{display:inline-flex;align-items:center;overflow:hidden;
   text-decoration:none;z-index:210;border-radius:99px;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
 .nav__cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(0, 174, 239,.35);}
-.nav__cta-icon svg{width:14px;height:14px;transform:rotate(-45deg);}
+
+@media (max-width: 960px) {
+  .nav__desktop-links { display: none !important; }
+  .nav__toggle { display: flex !important; }
+}
 
 /* FULLSCREEN MENU */
 .nav-menu{position:fixed;inset:0;z-index:190;background:rgba(7,10,16,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
@@ -2324,16 +2342,25 @@ function handleModalQuoteSubmit(e) {
     <img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@latest/assets/Round%20pushpin/3D/round_pushpin_3d.png" alt="Round pushpin" style="width:1.25em; height:1.25em; vertical-align:middle; display:inline-block; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15)); margin-right:4px;"> <strong>BASED IN LEITRIM, IRELAND — COVERING ALL AREAS</strong> &mdash; <a href="tel:0858377646">CALL JAY: 085 837 7646 &rarr;</a>
   </div>
   <nav class="nav" id="mainNav">
-    <button class="nav__toggle" id="navToggle" aria-label="Toggle Menu">
-      <svg class="nav__toggle-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      <svg class="nav__toggle-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-
     <a href="#" class="nav__logo" aria-label="APEX Block Paving">
       <img decoding="async" src="images/apex-logo.jpg" alt="APEX Block Paving Logo" class="nav__logo-img" style="height: 54px; width: auto; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2);">
     </a>
 
-    <button onclick="openQuoteModal()" class="nav__cta"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@latest/assets/Clipboard/3D/clipboard_3d.png" alt="Clipboard" style="width:1.25em; height:1.25em; vertical-align:middle; display:inline-block; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15)); margin-right:4px;"> GET FREE QUOTE</button>
+    <div class="nav__desktop-links">
+      <a href="#">Home</a>
+      <a href="#about">Why Choose Us</a>
+      <a href="#services">Services</a>
+      <a href="#estimator">Cost Estimator</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="nav__right">
+      <button onclick="openQuoteModal()" class="nav__cta"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@latest/assets/Clipboard/3D/clipboard_3d.png" alt="Clipboard" style="width:1.25em; height:1.25em; vertical-align:middle; display:inline-block; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15)); margin-right:4px;"> GET FREE QUOTE</button>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle Menu">
+        <svg class="nav__toggle-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="nav__toggle-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
   </nav>
 </header>
 
